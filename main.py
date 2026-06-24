@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from google import genai
+import time
 
 print("4 debugging: script IS running!")
 #so it can see .env
@@ -25,7 +26,7 @@ def start_chatbot():
     while True:
         #input here
         uinput = input("You: ")
-        
+
         # if exit/quit
         if uinput.strip().lower() in ['exit','quit']:
             print("🌟 Assistant: Byebye!")
@@ -34,19 +35,34 @@ def start_chatbot():
         # if no input
         if not uinput.strip():
             continue
+                
+        # logic for re-sending user input if 503!! (server busy)
+        response = None
+        retries = 3
+        delay = 2 #seconds
         
         try:
-            #usr gemini (flash), wait for a response
-            response = client.models.generate_content(
-                model='gemini-2.5-flash',
-                contents=uinput
-            )
-            
-            #show gemini's response
-            print(f"🌟 Assistant: {response.text}\n")
+            for attempt in range(retries):
+                try:
+                    response = client.models.generate_content(
+                        model='gemini-2.5-flash',
+                        contents=uinput
+                    )
+                    break
+                except Exception as e:
+                    if "503" in str(e) and attempt < retries - 1:
+                        print(f"Error: Gemini's servers are busy, retrying in {delay}s...") # Fixed printf -> print
+                        time.sleep(delay)
+                        delay *= 2 #delay will get longer per try
+                    else:
+                        raise e
+                
+            #show gemini's response, if no errors
+            if response:
+                print(f"🌟 Assistant: {response.text}\n")
             
         except Exception as e:
-            print(f"There was an error submitting or retrieving your response:\n{e}\n") #this will display the actual error to the user!! waoww!!
+            print(f"There was an error submitting or retrieving your response:\n{e}\n")
             
 if __name__ == "__main__":
     start_chatbot()
