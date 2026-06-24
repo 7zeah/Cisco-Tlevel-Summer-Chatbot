@@ -1,0 +1,9 @@
+# ignore venv
+venv/
+
+# ignore api keys
+.env
+
+# ignore any cache
+__pycache__/
+*.pyc
