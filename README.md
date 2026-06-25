@@ -4,6 +4,8 @@ Currently the chatbot is able to answer simple, general queries, and is able to 
 
 Setup Instructions here!
 
+**After downloading everything as a .zip file, and moving the main folder somewhere accessible,**
+
 1) open the program folder in your terminal
 
 2) run the following:
