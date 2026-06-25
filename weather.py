@@ -6,7 +6,7 @@ load_dotenv()
 
 def get_weather(location: str) -> str:
     # grabs and returns weather info from OpenWeather API
-    
+    print("[SYSTEM]: calling external API...") # to tell user when api is called in main
     #get api
     api_key = os.getenv("WEATHER_API_KEY")
     if not api_key:
