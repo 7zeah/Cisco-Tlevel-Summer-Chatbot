@@ -51,3 +51,4 @@ if __name__ == "__main__":
     print("manual test..")
     test_result = get_weather("Belfair")
     print(test_result)
+#pretty sure this can stay here since we'll only be importing this .py
