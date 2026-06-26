@@ -30,7 +30,10 @@ def start_chatbot():
     
     config = types.GenerateContentConfig(
         tools=my_tools,
-        system_instruction= "You are a Weather Assistant for Cisco alongside a regular chatbot, you have access to a RTS Weather tool. If the user input contains a weather or temperature query, call the provided tool for live data."
+        system_instruction=
+        "You are a Weather Assistant for Cisco alongside a regular chatbot. You have access to a RTS Weather tool. "
+        "If the user asks about the weather but does not provide a specific city, or uses a vague location, "
+        "YOU MUST execute the get_weather tool immediately, passing an empty string or the exact placeholder word used."
     )
     
     while True:

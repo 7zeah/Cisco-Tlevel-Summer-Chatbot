@@ -12,6 +12,8 @@ def get_weather(location: str = "") -> str:
     else:
         location = ""
         
+    print("[SYSTEM]: Calling external API...") # to tell user when api is called in main
+    
     if not location or location.lower() in ["unspecified", "somewhere", "current location"]:
         print("\n🌟 Assistant: I can certainly provide weather informtion! Could you tell me the location you're enquiring about?")
         location = input("You (enter a city or town): ").strip()
@@ -19,7 +21,7 @@ def get_weather(location: str = "") -> str:
         if not location:
             return "I was unable to execute your request as no location was provided."
     
-    print("[SYSTEM]: calling external API...") # to tell user when api is called in main
+    
     #get api
     api_key = os.getenv("WEATHER_API_KEY")
     if not api_key:
