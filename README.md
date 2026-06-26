@@ -4,7 +4,7 @@ Welcome to the Cisco Weather Assistant + general chatbot!
 
 Setup Instructions here!
 
-After downloading everything as a .zip file, and moving the main folder somewhere accessible,
+**After downloading everything as a .zip file, and moving the main folder somewhere accessible,**
 
 1) open the program folder in your terminal
 
