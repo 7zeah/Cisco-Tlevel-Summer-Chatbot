@@ -33,11 +33,13 @@ Note: both keys are free, but are not bundled with the program for security reas
 ---------------------------------- 
 
 Tool-Routed Queries (External API):
+
 You: "What's the temperature in London right now?"
 
 You: "Is it raining in Berlin?"
 
 Native Knowledge Base Queries:
+
 You: "What is Cisco DNA Center?"
 
 You: "What is a network switch?"

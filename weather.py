@@ -4,8 +4,21 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_weather(location: str) -> str:
+def get_weather(location: str = "") -> str:
     # grabs and returns weather info from OpenWeather API
+    
+    if location:
+        location = location.strip()
+    else:
+        location = ""
+        
+    if not location or location.lower() in ["unspecified", "somewhere", "current location"]:
+        print("\n🌟 Assistant: I can certainly provide weather informtion! Could you tell me the location you're enquiring about?")
+        location = input("You (enter a city or town): ").strip()
+        
+        if not location:
+            return "I was unable to execute your request as no location was provided."
+    
     print("[SYSTEM]: calling external API...") # to tell user when api is called in main
     #get api
     api_key = os.getenv("WEATHER_API_KEY")
